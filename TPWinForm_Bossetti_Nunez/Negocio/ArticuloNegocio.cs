@@ -22,6 +22,11 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
+                    Articulo aux = new Articulo();
+                    aux.Codigo = (string)datos.Lector["Numero"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+
 
                 }
 
