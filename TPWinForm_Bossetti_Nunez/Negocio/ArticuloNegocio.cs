@@ -26,8 +26,10 @@ namespace Negocio
                     aux.Codigo = (string)datos.Lector["Numero"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-
-
+                    aux.Marca.Descripcion = (string)datos.Lector["Marca_escripcion"];
+                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria_descripcion"];
+                    aux.URLImagen = (string)datos.Lector["UrlImagen"];
+                    aux.Precio = (int)datos.Lector["Precio"];
                 }
 
 
