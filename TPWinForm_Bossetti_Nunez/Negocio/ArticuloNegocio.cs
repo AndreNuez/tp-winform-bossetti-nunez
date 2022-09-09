@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select a.Codigo, a.Nombre, a.Descripcion, b.Descripcion Marca_Descripcion, c.Descripcion Categoria_Desripcion, a.ImagenUrl, a.Precio From Articulos a Left Join Marcas b on a.IdMarca = b.Id Left Join Categorias c on a.IdCategoria = c.Id");
+                datos.setearConsulta("Select a.Codigo, a.Nombre, a.Descripcion, b.Descripcion Marca_Descripcion, c.Descripcion Categoria_Descripcion, a.ImagenUrl, a.Precio From Articulos a Left Join Marcas b on a.IdMarca = b.Id Left Join Categorias c on a.IdCategoria = c.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -26,10 +26,12 @@ namespace Negocio
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Marca = new Marca();
                     aux.Marca.Descripcion = (string)datos.Lector["Marca_Descripcion"];
-                    aux.Categoria.Descripcion = (string)datos.Lector["Categoria_Descripcion"];
-                    aux.URLImagen = (string)datos.Lector["ImagenUrl"];
-                    aux.Precio = (int)datos.Lector["Precio"];
+                    //aux.Categoria = new Categoria();
+                    //aux.Categoria.Descripcion = (string)datos.Lector["Categoria_Descripcion"];
+                    aux.ImagenURL = (string)datos.Lector["ImagenUrl"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
 
                     lista.Add(aux);
                 }
@@ -47,5 +49,38 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public void Agregar (Articulo nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
+
+                datos.setearParametro("@Codigo", nuevo.Codigo);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Descripcion", nuevo.Descripcion);
+                datos.setearParametro("@IdMarca", nuevo.Marca.Descripcion);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.Descripcion);
+                //datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
+                datos.setearParametro("@Precio", nuevo.Precio);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

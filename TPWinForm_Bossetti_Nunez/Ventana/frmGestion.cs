@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Modelo;
 using Negocio;
 
 namespace Ventana
@@ -22,6 +23,7 @@ namespace Ventana
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvArticulos.DataSource = negocio.listar();
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
         }
 
         private void frmGestion_FormClosing(object sender, FormClosingEventArgs e)
