@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace Ventana
 {
@@ -19,7 +20,8 @@ namespace Ventana
 
         private void frmGestion_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Bienvenido usuario");
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
         }
 
         private void frmGestion_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,5 +39,7 @@ namespace Ventana
         {
             Close();
         }
+
+       
     }
 }
