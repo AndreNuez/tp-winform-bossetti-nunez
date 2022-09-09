@@ -22,17 +22,23 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    Categoria aux = new Categoria();
+                    Marca aux = new Marca();
                     aux.ID = (int)datos.Lector["Id"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-                }
 
+                    lista.Add(aux);
+                }
 
                 return lista;
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }

@@ -30,14 +30,21 @@ namespace Negocio
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria_descripcion"];
                     aux.URLImagen = (string)datos.Lector["UrlImagen"];
                     aux.Precio = (int)datos.Lector["Precio"];
+
+                    lista.Add(aux);
                 }
 
-
                 return lista;
+
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }

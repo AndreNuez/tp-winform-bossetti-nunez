@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace View
+namespace Ventana
 {
-    public partial class Form1 : Form
+    public partial class frmAgregarArticulo : Form
     {
-        public Form1()
+        public frmAgregarArticulo()
         {
             InitializeComponent();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C4B35575-315C-4092-BA24-9E71F5AB4BFA}</ProjectGuid>
+    <ProjectGuid>{3D163F00-F474-43C1-BC7B-54DEC0A87A37}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>View</RootNamespace>
-    <AssemblyName>View</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Ventana</RootNamespace>
+    <AssemblyName>Ventana</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,12 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs" />
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmAgregarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgregarArticulo.Designer.cs">
+      <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestion.Designer.cs">
+      <DependentUpon>frmGestion.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAgregarArticulo.resx">
+      <DependentUpon>frmAgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestion.resx">
+      <DependentUpon>frmGestion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
