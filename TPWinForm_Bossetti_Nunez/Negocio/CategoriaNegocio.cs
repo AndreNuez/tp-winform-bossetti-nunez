@@ -25,14 +25,20 @@ namespace Negocio
                     Categoria aux = new Categoria();
                     aux.ID = (int)datos.Lector["Id"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
-                }
 
+                    lista.Add(aux);
+                }
 
                 return lista;
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }
