@@ -28,8 +28,11 @@ namespace Negocio
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Marca = new Marca();
                     aux.Marca.Descripcion = (string)datos.Lector["Marca_Descripcion"];
-                    //aux.Categoria = new Categoria();
-                    //aux.Categoria.Descripcion = (string)datos.Lector["Categoria_Descripcion"];
+                    aux.Categoria = new Categoria();
+
+                    if (!(datos.Lector["Categoria_Descripcion"] is DBNull))
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria_Descripcion"];
+                    
                     aux.ImagenURL = (string)datos.Lector["ImagenUrl"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
 

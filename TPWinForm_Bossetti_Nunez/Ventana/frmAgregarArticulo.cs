@@ -35,7 +35,7 @@ namespace Ventana
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Descripcion = txtDescripcion.Text;
                 nuevo.Marca = (Marca)cboMarca.SelectedItem;
-                //nuevo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                nuevo.Categoria = (Categoria)cboCategoria.SelectedItem;
                 nuevo.Precio = decimal.Parse(txtPrecio.Text);
 
                 negocio.Agregar(nuevo);
@@ -57,13 +57,13 @@ namespace Ventana
             try
             {
                 cboMarca.DataSource = articuloNegocio.listar();
-                //cboCategoria.DataSource = articuloNegocio.listar();
+                cboCategoria.DataSource = articuloNegocio.listar();
 
             }
             catch (Exception ex)
             {
 
-                throw ex;
+                MessageBox.Show(ex.ToString());
             }
         }
     }

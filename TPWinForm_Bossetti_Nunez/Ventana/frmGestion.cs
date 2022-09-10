@@ -22,8 +22,18 @@ namespace Ventana
         private void frmGestion_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = negocio.listar();
-            dgvArticulos.Columns["ImagenUrl"].Visible = false;
+
+            try
+            {
+                dgvArticulos.DataSource = negocio.listar();
+                dgvArticulos.Columns["ImagenUrl"].Visible = false;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private void frmGestion_FormClosing(object sender, FormClosingEventArgs e)
