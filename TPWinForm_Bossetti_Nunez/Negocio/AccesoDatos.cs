@@ -20,8 +20,8 @@ namespace Negocio
 
         public AccesoDatos()
         {
-            //conexion = new SqlConnection("server=.\\[Nombre Motor de BD]; database=[db name]; integrated security=True");
-            conexion = new SqlConnection("server=localhost; database=CATALOGO_DB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=True");
+            //conexion = new SqlConnection("server=localhost; database=CATALOGO_DB; integrated security=true");
             comando = new SqlCommand();
         }
 

@@ -39,26 +39,26 @@ namespace Ventana
                 nuevo.Precio = decimal.Parse(txtPrecio.Text);
 
                 negocio.Agregar(nuevo);
-                MessageBox.Show("Articulo agregado correctamente.");
+                MessageBox.Show("Artículo agregado correctamente.");
                 Close();
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.ToString());
             }
         }
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
             try
             {
-                cboMarca.DataSource = articuloNegocio.listar();
-                cboCategoria.DataSource = articuloNegocio.listar();
-
+                cboMarca.DataSource = marcaNegocio.listar();
+                cboCategoria.DataSource = categoriaNegocio.listar();
             }
             catch (Exception ex)
             {

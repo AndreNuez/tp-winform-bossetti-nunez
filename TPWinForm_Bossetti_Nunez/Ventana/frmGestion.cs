@@ -14,6 +14,7 @@ namespace Ventana
 {
     public partial class frmGestion : Form
     {
+        private List<Articulo> listaArticulo;
         public frmGestion()
         {
             InitializeComponent();
@@ -25,8 +26,11 @@ namespace Ventana
 
             try
             {
-                dgvArticulos.DataSource = negocio.listar();
+                ArticuloNegocio negocioArticulo = new ArticuloNegocio();
+                listaArticulo = negocioArticulo.listar();
+                dgvArticulos.DataSource = listaArticulo;
                 dgvArticulos.Columns["ImagenUrl"].Visible = false;
+                cargaImagen(listaArticulo[0].ImagenURL);
 
             }
             catch (Exception ex)
@@ -52,6 +56,23 @@ namespace Ventana
             Close();
         }
 
-       
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            cargaImagen(seleccionado.ImagenURL);
+        }
+
+        private void cargaImagen(string imagen)
+        {
+
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbxArticulo.Load("https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=");
+            }
+        }
     }
 }
