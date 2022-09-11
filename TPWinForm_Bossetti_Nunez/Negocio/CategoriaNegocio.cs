@@ -8,7 +8,7 @@ using Modelo;
 
 namespace Negocio
 {
-    class CategoriaNegocio
+    public class CategoriaNegocio
     {
         public List<Categoria> listar()
         {
@@ -17,7 +17,7 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("--Consulta SQL");
+                datos.setearConsulta("select Id, Descripcion from Categorias");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

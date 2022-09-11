@@ -52,13 +52,13 @@ namespace Ventana
 
         private void frmAgregarArticulo_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
             try
             {
-                cboMarca.DataSource = articuloNegocio.listar();
-                cboCategoria.DataSource = articuloNegocio.listar();
-
+                cboMarca.DataSource = marcaNegocio.listar();
+                cboCategoria.DataSource = categoriaNegocio.listar();
             }
             catch (Exception ex)
             {
