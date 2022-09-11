@@ -53,11 +53,9 @@ namespace Negocio
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -73,6 +71,5 @@ namespace Negocio
                 lector.Close();
             conexion.Close();
         }
-
     }
 }

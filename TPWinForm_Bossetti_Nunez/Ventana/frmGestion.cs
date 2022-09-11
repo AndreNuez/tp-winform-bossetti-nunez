@@ -22,6 +22,11 @@ namespace Ventana
 
         private void frmGestion_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+
+        private void cargar()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
@@ -35,8 +40,8 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -49,6 +54,7 @@ namespace Ventana
         {
             frmAgregarArticulo agregar = new frmAgregarArticulo();
             agregar.ShowDialog();
+            cargar();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
