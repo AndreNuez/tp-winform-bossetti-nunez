@@ -30,7 +30,7 @@ namespace Ventana
                 listaArticulo = negocioArticulo.listar();
                 dgvArticulos.DataSource = listaArticulo;
                 dgvArticulos.Columns["ImagenUrl"].Visible = false;
-                imageLoad(listaArticulo[0].ImagenURL);
+                cargaImagen(listaArticulo[0].ImagenURL);
 
             }
             catch (Exception ex)
@@ -59,10 +59,10 @@ namespace Ventana
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            imageLoad(seleccionado.ImagenURL);
+            cargaImagen(seleccionado.ImagenURL);
         }
 
-        private void imageLoad(string imagen)
+        private void cargaImagen(string imagen)
         {
 
             try

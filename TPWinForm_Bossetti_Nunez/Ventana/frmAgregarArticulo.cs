@@ -39,14 +39,14 @@ namespace Ventana
                 nuevo.Precio = decimal.Parse(txtPrecio.Text);
 
                 negocio.Agregar(nuevo);
-                MessageBox.Show("Articulo agregado correctamente.");
+                MessageBox.Show("Artículo agregado correctamente.");
                 Close();
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.ToString());
             }
         }
 
