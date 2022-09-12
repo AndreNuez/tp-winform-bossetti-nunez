@@ -44,9 +44,9 @@ namespace Ventana
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtImagen = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.txtImagenURL = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -193,30 +193,30 @@ namespace Ventana
             this.cboCategoria.Size = new System.Drawing.Size(180, 28);
             this.cboCategoria.TabIndex = 14;
             // 
-            // pictureBox1
+            // pbxArticulo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(431, 51);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(238, 220);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.pbxArticulo.Location = new System.Drawing.Point(431, 51);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(238, 220);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 15;
+            this.pbxArticulo.TabStop = false;
             // 
-            // txtImagen
+            // txtImagenURL
             // 
-            this.txtImagen.Location = new System.Drawing.Point(177, 259);
-            this.txtImagen.Name = "txtImagen";
-            this.txtImagen.Size = new System.Drawing.Size(179, 26);
-            this.txtImagen.TabIndex = 16;
-            this.txtImagen.Leave += new System.EventHandler(this.txtImagen_Leave);
+            this.txtImagenURL.Location = new System.Drawing.Point(177, 259);
+            this.txtImagenURL.Name = "txtImagenURL";
+            this.txtImagenURL.Size = new System.Drawing.Size(179, 26);
+            this.txtImagenURL.TabIndex = 16;
+            this.txtImagenURL.Leave += new System.EventHandler(this.txtImagen_Leave);
             // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 457);
-            this.Controls.Add(this.txtImagen);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.txtImagenURL);
+            this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.txtPrecio);
@@ -237,7 +237,7 @@ namespace Ventana
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.frmAgregarArticulo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,7 +260,7 @@ namespace Ventana
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.ComboBox cboCategoria;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtImagen;
+        private System.Windows.Forms.PictureBox pbxArticulo;
+        private System.Windows.Forms.TextBox txtImagenURL;
     }
 }
