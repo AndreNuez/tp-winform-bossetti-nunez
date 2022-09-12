@@ -22,6 +22,11 @@ namespace Ventana
 
         private void frmGestion_Load(object sender, EventArgs e)
         {
+            cargar();
+        }
+
+        private void cargar()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
@@ -30,13 +35,13 @@ namespace Ventana
                 listaArticulo = negocioArticulo.listar();
                 dgvArticulos.DataSource = listaArticulo;
                 dgvArticulos.Columns["ImagenUrl"].Visible = false;
-                cargaImagen(listaArticulo[0].ImagenURL);
+                cargarImagen(listaArticulo[0].ImagenURL);
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                //throw ex;
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -49,6 +54,7 @@ namespace Ventana
         {
             frmAgregarArticulo agregar = new frmAgregarArticulo();
             agregar.ShowDialog();
+            cargar();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -59,10 +65,10 @@ namespace Ventana
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            cargaImagen(seleccionado.ImagenURL);
+            cargarImagen(seleccionado.ImagenURL);
         }
 
-        private void cargaImagen(string imagen)
+        private void cargarImagen(string imagen)
         {
 
             try

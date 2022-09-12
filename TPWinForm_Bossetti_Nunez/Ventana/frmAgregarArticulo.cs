@@ -62,8 +62,24 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagenURL.Text);
+        }
+        private void cargarImagen(string imagen)
+        {
+
+            try
+            {
+                pbxArticulo.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbxArticulo.Load("https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=");
             }
         }
     }

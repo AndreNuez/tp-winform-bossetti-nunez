@@ -44,6 +44,9 @@ namespace Ventana
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.txtImagenURL = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -151,7 +154,7 @@ namespace Ventana
             this.txtCodigo.Location = new System.Drawing.Point(177, 51);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(180, 26);
+            this.txtCodigo.Size = new System.Drawing.Size(179, 26);
             this.txtCodigo.TabIndex = 10;
             // 
             // txtDescripcion
@@ -167,7 +170,7 @@ namespace Ventana
             this.txtPrecio.Location = new System.Drawing.Point(177, 300);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(148, 26);
+            this.txtPrecio.Size = new System.Drawing.Size(180, 26);
             this.txtPrecio.TabIndex = 12;
             // 
             // cboMarca
@@ -190,11 +193,30 @@ namespace Ventana
             this.cboCategoria.Size = new System.Drawing.Size(180, 28);
             this.cboCategoria.TabIndex = 14;
             // 
+            // pbxArticulo
+            // 
+            this.pbxArticulo.Location = new System.Drawing.Point(431, 51);
+            this.pbxArticulo.Name = "pbxArticulo";
+            this.pbxArticulo.Size = new System.Drawing.Size(238, 220);
+            this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxArticulo.TabIndex = 15;
+            this.pbxArticulo.TabStop = false;
+            // 
+            // txtImagenURL
+            // 
+            this.txtImagenURL.Location = new System.Drawing.Point(177, 259);
+            this.txtImagenURL.Name = "txtImagenURL";
+            this.txtImagenURL.Size = new System.Drawing.Size(179, 26);
+            this.txtImagenURL.TabIndex = 16;
+            this.txtImagenURL.Leave += new System.EventHandler(this.txtImagen_Leave);
+            // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 457);
+            this.ClientSize = new System.Drawing.Size(721, 457);
+            this.Controls.Add(this.txtImagenURL);
+            this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.txtPrecio);
@@ -215,6 +237,7 @@ namespace Ventana
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar Articulo";
             this.Load += new System.EventHandler(this.frmAgregarArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +260,7 @@ namespace Ventana
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.ComboBox cboCategoria;
+        private System.Windows.Forms.PictureBox pbxArticulo;
+        private System.Windows.Forms.TextBox txtImagenURL;
     }
 }
