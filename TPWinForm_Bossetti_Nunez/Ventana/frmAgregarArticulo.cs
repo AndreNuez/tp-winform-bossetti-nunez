@@ -62,9 +62,13 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void txtImagen_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }
