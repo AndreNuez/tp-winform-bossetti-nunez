@@ -14,9 +14,17 @@ namespace Ventana
 {
     public partial class frmAgregarArticulo : Form
     {
+        private Articulo articulo = null;
         public frmAgregarArticulo()
         {
             InitializeComponent();
+        }
+
+        public frmAgregarArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Artículo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -26,20 +34,32 @@ namespace Ventana
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Articulo nuevo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
             {
-                nuevo.Codigo = txtCodigo.Text;
-                nuevo.Nombre = txtNombre.Text;
-                nuevo.Descripcion = txtDescripcion.Text;
-                nuevo.Marca = (Marca)cboMarca.SelectedItem;
-                nuevo.Categoria = (Categoria)cboCategoria.SelectedItem;
-                nuevo.Precio = decimal.Parse(txtPrecio.Text);
+                if (articulo == null)
+                    articulo = new Articulo();
+                
+                articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.ImagenURL = txtImagenURL.Text;
+                articulo.Marca = (Marca)cboMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cboCategoria.SelectedItem;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
 
-                negocio.Agregar(nuevo);
-                MessageBox.Show("Artículo agregado correctamente.");
+                if (articulo.IDArticulo != 0)
+                {
+                    negocio.Modificar(articulo);
+                    MessageBox.Show("Artículo modificado exitosamente.");
+                }
+                else
+                {
+                    negocio.Agregar(articulo);
+                    MessageBox.Show("Artículo agregado exitosamente.");
+                }
+                
                 Close();
 
             }
@@ -58,7 +78,26 @@ namespace Ventana
             try
             {
                 cboMarca.DataSource = marcaNegocio.listar();
+                cboMarca.ValueMember = "Id";
+                cboMarca.DisplayMember = "Descripcion";
                 cboCategoria.DataSource = categoriaNegocio.listar();
+                cboCategoria.ValueMember = "Id";
+                cboCategoria.DisplayMember = "Descripcion";
+
+                if(articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo;
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtImagenURL.Text = articulo.ImagenURL;
+                    cargarImagen(articulo.ImagenURL);
+                    txtPrecio.Text = articulo.Precio.ToString();
+
+                    cboMarca.SelectedValue = articulo.Marca.ID;
+                    cboCategoria.SelectedValue = articulo.Categoria.ID;
+                    
+                }
+
             }
             catch (Exception ex)
             {
