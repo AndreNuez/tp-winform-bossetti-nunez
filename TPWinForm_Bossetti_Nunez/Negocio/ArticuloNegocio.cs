@@ -17,22 +17,25 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("Select a.Codigo, a.Nombre, a.Descripcion, b.Descripcion Marca_Descripcion, c.Descripcion Categoria_Descripcion, a.ImagenUrl, a.Precio From Articulos a Inner Join Marcas b on a.IdMarca = b.Id Inner Join Categorias c on a.IdCategoria = c.Id");
+                datos.setearConsulta("Select a.Id, a.Codigo, a.Nombre, a.Descripcion, b.Id Marca_Id, b.Descripcion Marca_Descripcion, c.Id Categoria_Id, c.Descripcion Categoria_Descripcion, a.ImagenUrl, a.Precio From Articulos a Inner Join Marcas b on a.IdMarca = b.Id Inner Join Categorias c on a.IdCategoria = c.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
+                    aux.IDArticulo = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Marca = new Marca();
+                    aux.Marca.ID = (int)datos.Lector["Marca_Id"];
                     aux.Marca.Descripcion = (string)datos.Lector["Marca_Descripcion"];
                     aux.Categoria = new Categoria();
 
                     if (!(datos.Lector["Categoria_Descripcion"] is DBNull))
+                        aux.Categoria.ID = (int)datos.Lector["Categoria_Id"];
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria_Descripcion"];
-                    
+                                         
                     aux.ImagenURL = (string)datos.Lector["ImagenUrl"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
@@ -60,14 +63,14 @@ namespace Negocio
 
             try
             {
-                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
+                datos.setearConsulta("INSERT INTO Articulos (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenURL, Precio) values (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @ImagenURL, @Precio)");
 
                 datos.setearParametro("@Codigo", nuevo.Codigo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@IdMarca", nuevo.Marca.Descripcion);
-                datos.setearParametro("@IdCategoria", nuevo.Categoria.Descripcion);
-                //datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
+                datos.setearParametro("@IdMarca", nuevo.Marca.ID);
+                datos.setearParametro("@IdCategoria", nuevo.Categoria.ID);
+                datos.setearParametro("@ImagenURL", nuevo.ImagenURL);
                 datos.setearParametro("@Precio", nuevo.Precio);
 
                 datos.ejecutarAccion();
@@ -79,6 +82,35 @@ namespace Negocio
                 throw ex;
             }
 
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void Modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Articulos SET Codigo=@Codigo, Nombre=@Nombre, Descripcion=@Descripcion, IdMarca=@IdMarca, IdCategoria=@IdCategoria, ImagenURL=@ImagenURL, Precio=@Precio WHERE Id=@Id");
+
+                datos.setearParametro("@Codigo",articulo.Codigo);
+                datos.setearParametro("@Nombre",articulo.Nombre);
+                datos.setearParametro("@Descripcion",articulo.Descripcion);
+                datos.setearParametro("IdMarca",articulo.Marca.ID);
+                datos.setearParametro("IdCategoria",articulo.Categoria.ID);
+                datos.setearParametro("ImagenURL",articulo.ImagenURL);
+                datos.setearParametro("Precio",articulo.Precio);
+                datos.setearParametro("Id",articulo.IDArticulo);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 datos.cerrarConexion();
