@@ -94,5 +94,46 @@ namespace Ventana
             modificar.ShowDialog();
             cargar();
         }
+
+        private void btnEliminarFisico_Click(object sender, EventArgs e)
+        {
+            Eliminar();
+        }
+
+        //private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    
+        //}
+
+        private void btnEliminarLogico_Click(object sender, EventArgs e)
+        {
+            Eliminar(true);
+        }
+
+        private void Eliminar(bool logico = false)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Seguro desea eliminarlo?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    
+                    if (logico)
+                        negocio.EliminarLogico(seleccionado.IDArticulo);
+                    else
+                        negocio.Eliminar(seleccionado.IDArticulo);
+
+                    cargar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
     }
 }
