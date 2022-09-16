@@ -9,6 +9,7 @@ namespace Modelo
 {
     public class Articulo
     {
+        [DisplayName("Id Artículo")]
         public int IDArticulo { get; set; }
         [DisplayName("Código")]
         public string Codigo { get; set; }
