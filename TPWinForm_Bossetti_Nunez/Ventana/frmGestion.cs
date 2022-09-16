@@ -18,13 +18,16 @@ namespace Ventana
         public frmGestion()
         {
             InitializeComponent();
-            cboCampo.Items.Add("Nombre");
-            cboCampo.Items.Add("Id Artículo");
         }
 
         private void frmGestion_Load(object sender, EventArgs e)
         {
             cargar();
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Marca");
+            cboCampo.Items.Add("Categoría");
+            cboCampo.Items.Add("Precio");
+
         }
 
         private void cargar()
@@ -138,7 +141,7 @@ namespace Ventana
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cboCampo.SelectedItem.ToString();
-            if(opcion == "Id Artículo")
+            if(opcion == "Precio")
             {
                 cboCriterio.Items.Clear();
                 cboCriterio.Items.Add("Mayor a");
@@ -165,7 +168,7 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString())
+                MessageBox.Show(ex.ToString());
             }
         }
     }

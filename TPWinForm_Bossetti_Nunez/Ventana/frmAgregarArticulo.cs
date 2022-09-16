@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Configuration;
 using Modelo;
 using Negocio;
+
 
 namespace Ventana
 {
     public partial class frmAgregarArticulo : Form
     {
         private Articulo articulo = null;
+        private OpenFileDialog archivo = null;
+
         public frmAgregarArticulo()
         {
             InitializeComponent();
@@ -58,6 +63,11 @@ namespace Ventana
                 {
                     negocio.Agregar(articulo);
                     MessageBox.Show("Artículo agregado exitosamente.");
+                }
+
+                if(archivo!=null && !(txtImagenURL.Text.ToUpper().Contains("HTTP")))
+                {
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["ImagenesTP"] + archivo.SafeFileName);
                 }
                 
                 Close();
@@ -119,6 +129,18 @@ namespace Ventana
             catch (Exception ex)
             {
                 pbxArticulo.Load("https://media.istockphoto.com/vectors/thumbnail-image-vector-graphic-vector-id1147544807?k=20&m=1147544807&s=612x612&w=0&h=pBhz1dkwsCMq37Udtp9sfxbjaMl27JUapoyYpQm0anc=");
+            }
+        }
+
+        private void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog();
+            archivo.Filter = "jpg|*.jpg;|png|*.png";
+
+            if (archivo.ShowDialog()== DialogResult.OK)
+            {
+                txtImagenURL.Text = archivo.FileName;
+                cargarImagen(archivo.FileName);
             }
         }
     }
