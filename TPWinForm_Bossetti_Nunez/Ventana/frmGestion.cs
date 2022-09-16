@@ -18,6 +18,8 @@ namespace Ventana
         public frmGestion()
         {
             InitializeComponent();
+            cboCampo.Items.Add("Nombre");
+            cboCampo.Items.Add("Id Artículo");
         }
 
         private void frmGestion_Load(object sender, EventArgs e)
@@ -100,10 +102,7 @@ namespace Ventana
             Eliminar();
         }
 
-        //private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    
-        //}
+
 
         private void btnEliminarLogico_Click(object sender, EventArgs e)
         {
@@ -134,6 +133,40 @@ namespace Ventana
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cboCampo.SelectedItem.ToString();
+            if(opcion == "Id Artículo")
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Mayor a");
+                cboCriterio.Items.Add("Menor a");
+                cboCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cboCriterio.Items.Clear();
+                cboCriterio.Items.Add("Comienza con");
+                cboCriterio.Items.Add("Termina con");
+                cboCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnFiltro_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string campo = cboCampo.SelectedItem.ToString();
+                string criterio = cboCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvArticulos.DataSource = ArticuloNegocio.filtrar(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString())
+            }
         }
     }
 }
