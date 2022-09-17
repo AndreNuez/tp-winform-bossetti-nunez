@@ -40,7 +40,14 @@ namespace Ventana
                 listaArticulo = negocioArticulo.listar();
                 dgvArticulos.DataSource = listaArticulo;
                 ocultarColumnas();
-                cargarImagen(listaArticulo[0].ImagenURL);
+                if (listaArticulo.Count!=0)
+                {
+                    cargarImagen(listaArticulo[0].ImagenURL);
+                }
+                else
+                {
+                    cargarImagen(" ");
+                }
 
             }
             catch (Exception ex)
