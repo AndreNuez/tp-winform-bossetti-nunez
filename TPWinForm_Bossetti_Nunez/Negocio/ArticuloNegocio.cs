@@ -147,26 +147,26 @@ namespace Negocio
             }
         }
 
-        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        public static List<Articulo> filtrar(string campo, string criterio, string filtro)
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "-- Consulta SQL";
+                string consulta = "Select a.Id, a.Codigo, a.Nombre, a.Descripcion, b.Id Marca_Id, b.Descripcion Marca_Descripcion, c.Id Categoria_Id, c.Descripcion Categoria_Descripcion, a.ImagenUrl, a.Precio From Articulos a Inner Join Marcas b on a.IdMarca = b.Id Inner Join Categorias c on a.IdCategoria = c.Id And ";
                 switch (campo)
                 {
-                    case "Id Artículo":
+                    case "Precio":
                         switch (criterio)
                         {
                             case "Mayor a":
-                                consulta += "IdArticulo >" + filtro;
+                                consulta += "a.Precio >" + filtro;
                                 break;
                             case "Menor a":
-                                consulta += "IdArticulo < " + filtro;
+                                consulta += "a.Precio < " + filtro;
                                 break;
                             default:
-                                consulta += "IdArticulo = " + filtro;
+                                consulta += "a.Precio = " + filtro;
                                 break;
                         }
                         break;
@@ -181,7 +181,37 @@ namespace Negocio
                                 consulta += "Nombre like '%" + filtro + "'";
                                 break;
                             default:
-                                consulta += "Nombre like '%" + filtro + "% '";
+                                consulta += "Nombre like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Marca":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "b.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "b.Descripcion like '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "b.Descripcion like '%" + filtro + "%'";
+                                break;
+                        }
+                        break;
+
+                    case "Categoría":
+                        switch (criterio)
+                        {
+                            case "Comienza con":
+                                consulta += "c.Descripcion like '" + filtro + "%'";
+                                break;
+                            case "Termina con":
+                                consulta += "c.Descripcion like '%" + filtro + "'";
+                                break;
+                            default:
+                                consulta += "c.Descripcion like '%" + filtro + "%'";
                                 break;
                         }
                         break;
