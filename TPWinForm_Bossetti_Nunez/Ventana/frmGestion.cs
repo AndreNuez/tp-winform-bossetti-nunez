@@ -39,8 +39,7 @@ namespace Ventana
                 ArticuloNegocio negocioArticulo = new ArticuloNegocio();
                 listaArticulo = negocioArticulo.listar();
                 dgvArticulos.DataSource = listaArticulo;
-                dgvArticulos.Columns["ImagenUrl"].Visible = false;
-                dgvArticulos.Columns["IDArticulo"].Visible = false;
+                ocultarColumnas();
                 cargarImagen(listaArticulo[0].ImagenURL);
 
             }
@@ -104,9 +103,7 @@ namespace Ventana
         {
             Eliminar();
         }
-
-
-
+        
         private void btnEliminarLogico_Click(object sender, EventArgs e)
         {
             Eliminar(true);
@@ -170,6 +167,30 @@ namespace Ventana
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["ImagenUrl"].Visible = false;
+            dgvArticulos.Columns["IDArticulo"].Visible = false;
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if (filtro != "")
+            {
+                listaFiltrada = listaArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaFiltrada = listaArticulo;
+            }
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
+            ocultarColumnas();
         }
     }
 }
