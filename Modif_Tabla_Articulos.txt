@@ -1,0 +1,4 @@
+--Se agrega Columna: Activo, con valor 1 por defecto
+Alter Table Articulos
+Add Activo Bit Not Null Default 1
+Go
