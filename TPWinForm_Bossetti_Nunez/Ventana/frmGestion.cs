@@ -15,6 +15,8 @@ namespace Ventana
     public partial class frmGestion : Form
     {
         private List<Articulo> listaArticulo;
+
+        Helper aux = new Helper();
         public frmGestion()
         {
             InitializeComponent();
@@ -52,7 +54,6 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-                //throw ex;
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -100,7 +101,7 @@ namespace Ventana
         {
             Articulo seleccionado;
             seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-
+            
             frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
             modificar.ShowDialog();
             cargar();
@@ -225,7 +226,7 @@ namespace Ventana
                     return true;
                 }
 
-                if (!(validarNumeros(txtFiltroAvanzado.Text)))
+                if (!(aux.validarNumeros(txtFiltroAvanzado.Text)))
                 {
                     MessageBox.Show("Para filtrar por precio solo pueden ingresar valores numéricos.");
                     return true;
@@ -235,7 +236,7 @@ namespace Ventana
             return false;
         }
 
-        private bool validarNumeros(string cadena)
+        /*private bool validarNumeros(string cadena)
         {
             foreach (char caracter in cadena)
             {
@@ -246,6 +247,6 @@ namespace Ventana
             }
 
             return true;
-        }
+        }*/
     }
 }

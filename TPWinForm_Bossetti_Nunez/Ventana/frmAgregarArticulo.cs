@@ -19,6 +19,8 @@ namespace Ventana
     {
         private Articulo articulo = null;
         private OpenFileDialog archivo = null;
+        
+        Helper aux = new Helper();
 
         public frmAgregarArticulo()
         {
@@ -45,7 +47,10 @@ namespace Ventana
             {
                 if (articulo == null)
                     articulo = new Articulo();
-                
+
+                if (validarFiltro())
+                    return;
+
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
@@ -75,7 +80,6 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-                //throw ex;
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -142,6 +146,47 @@ namespace Ventana
                 txtImagenURL.Text = archivo.FileName;
                 cargarImagen(archivo.FileName);
             }
+        }
+
+        private bool validarFiltro()
+        {
+            if (cboMarca.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione una marca.");
+                return true;
+            }
+
+            if (cboCategoria.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione una categoría.");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(txtCodigo.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un valor para el Codigo.");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un valor para el Nombre.");
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(txtPrecio.Text))
+            {
+                MessageBox.Show("Por favor, ingrese un valor para el Precio.");
+                return true;
+            }
+
+            if (!(aux.validarNumeros(txtPrecio.Text)))
+            {
+                MessageBox.Show("Para precio solo pueden ingresar valores numéricos.");
+                return true;
+            }
+
+            return false;
         }
     }
 }
