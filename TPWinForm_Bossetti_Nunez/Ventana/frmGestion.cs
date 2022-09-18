@@ -115,11 +115,6 @@ namespace Ventana
             
         }
 
-        private void btnEliminarFisico_Click(object sender, EventArgs e)
-        {
-            Eliminar();
-        }
-        
         private void btnEliminarLogico_Click(object sender, EventArgs e)
         {
             Eliminar(true);
@@ -138,12 +133,7 @@ namespace Ventana
                     {
                     
                         seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    
-                        if (logico)
-                            negocio.EliminarLogico(seleccionado.IDArticulo);
-                        else
-                            negocio.Eliminar(seleccionado.IDArticulo);
-
+                        negocio.EliminarLogico(seleccionado.IDArticulo);
                         cargar();
                     }
                 }
@@ -151,9 +141,7 @@ namespace Ventana
                 {
                     MessageBox.Show(ex.ToString());
                 }
-
             }
-
         }
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
@@ -248,6 +236,26 @@ namespace Ventana
 
             return false;
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                frmDetalle detalle = new frmDetalle(seleccionado);
+                detalle.ShowDialog();
+                //cargar();
+            }
+            else
+            {
+                MessageBox.Show("Primero debe seleccionar un artículo de la lista.");
+            }
+
+        }
+
+
 
         /*private bool validarNumeros(string cadena)
         {
