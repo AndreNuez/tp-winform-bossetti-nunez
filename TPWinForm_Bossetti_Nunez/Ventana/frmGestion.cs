@@ -115,11 +115,6 @@ namespace Ventana
             
         }
 
-        private void btnEliminarFisico_Click(object sender, EventArgs e)
-        {
-            Eliminar();
-        }
-        
         private void btnEliminarLogico_Click(object sender, EventArgs e)
         {
             Eliminar(true);
@@ -127,28 +122,26 @@ namespace Ventana
 
         private void Eliminar(bool logico = false)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo seleccionado;
-            try
+            if (dgvArticulos.CurrentRow != null)
             {
-                DialogResult respuesta = MessageBox.Show("¿Seguro desea eliminarlo?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                Articulo seleccionado;
+                try
                 {
-                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    DialogResult respuesta = MessageBox.Show("¿Seguro desea eliminarlo?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
                     
-                    if (logico)
+                        seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                         negocio.EliminarLogico(seleccionado.IDArticulo);
-                    else
-                        negocio.Eliminar(seleccionado.IDArticulo);
-
-                    cargar();
+                        cargar();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
         }
 
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
@@ -243,6 +236,26 @@ namespace Ventana
 
             return false;
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+
+                frmDetalle detalle = new frmDetalle(seleccionado);
+                detalle.ShowDialog();
+                //cargar();
+            }
+            else
+            {
+                MessageBox.Show("Primero debe seleccionar un artículo de la lista.");
+            }
+
+        }
+
+
 
         /*private bool validarNumeros(string cadena)
         {
