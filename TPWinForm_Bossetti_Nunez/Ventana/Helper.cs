@@ -18,6 +18,11 @@ namespace Ventana
                 }
             }
 
+            if (cadena.Contains("-"))
+            {
+                return false;
+            }
+
             return true;
         }
     }

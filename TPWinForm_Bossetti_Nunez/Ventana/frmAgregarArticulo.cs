@@ -181,7 +181,7 @@ namespace Ventana
 
             if (!(aux.validarNumeros(txtPrecio.Text)))
             {
-                MessageBox.Show("Para precio solo pueden ingresar valores numéricos.");
+                MessageBox.Show("Para precio solo puede ingresar valores numéricos positivos.");
                 return true;
             }
 
