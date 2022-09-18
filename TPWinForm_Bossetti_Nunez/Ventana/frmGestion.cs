@@ -246,7 +246,6 @@ namespace Ventana
 
                 frmDetalle detalle = new frmDetalle(seleccionado);
                 detalle.ShowDialog();
-                //cargar();
             }
             else
             {
@@ -254,20 +253,5 @@ namespace Ventana
             }
 
         }
-
-
-
-        /*private bool validarNumeros(string cadena)
-        {
-            foreach (char caracter in cadena)
-            {
-                if (!(char.IsNumber(caracter)))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }*/
     }
 }
