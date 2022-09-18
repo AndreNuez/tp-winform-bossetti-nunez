@@ -127,26 +127,31 @@ namespace Ventana
 
         private void Eliminar(bool logico = false)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo seleccionado;
-            try
+            if (dgvArticulos.CurrentRow != null)
             {
-                DialogResult respuesta = MessageBox.Show("¿Seguro desea eliminarlo?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                Articulo seleccionado;
+                try
                 {
-                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    DialogResult respuesta = MessageBox.Show("¿Seguro desea eliminarlo?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
                     
-                    if (logico)
-                        negocio.EliminarLogico(seleccionado.IDArticulo);
-                    else
-                        negocio.Eliminar(seleccionado.IDArticulo);
+                        seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    
+                        if (logico)
+                            negocio.EliminarLogico(seleccionado.IDArticulo);
+                        else
+                            negocio.Eliminar(seleccionado.IDArticulo);
 
-                    cargar();
+                        cargar();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
             }
 
         }
