@@ -15,6 +15,8 @@ namespace Ventana
     public partial class frmGestion : Form
     {
         private List<Articulo> listaArticulo;
+
+        Helper aux = new Helper();
         public frmGestion()
         {
             InitializeComponent();
@@ -52,7 +54,6 @@ namespace Ventana
             }
             catch (Exception ex)
             {
-                //throw ex;
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -98,12 +99,20 @@ namespace Ventana
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-
-            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            
+                frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+            else
+            {
+                MessageBox.Show("Primero debe seleccionar un artículo de la lista.");
+            }
+            
         }
 
         private void btnEliminarFisico_Click(object sender, EventArgs e)
@@ -165,6 +174,9 @@ namespace Ventana
         {
             try
             {
+                if (validarFiltro())
+                    return;
+                
                 string campo = cboCampo.SelectedItem.ToString();
                 string criterio = cboCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
@@ -187,9 +199,9 @@ namespace Ventana
             List<Articulo> listaFiltrada;
             string filtro = txtFiltro.Text;
 
-            if (filtro != "")
+            if (filtro.Length >= 3)
             {
-                listaFiltrada = listaArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()));
+                listaFiltrada = listaArticulo.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()) || x.Codigo.ToUpper().Contains(filtro.ToUpper()) || x.Marca.Descripcion.ToUpper().Contains(filtro.ToUpper()) || x.Categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
             }
             else
             {
@@ -199,5 +211,50 @@ namespace Ventana
             dgvArticulos.DataSource = listaFiltrada;
             ocultarColumnas();
         }
+
+        private bool validarFiltro()
+        {
+            if(cboCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione un valor para el campo.");
+                return true;
+            }
+
+            if(cboCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione un valor para el criterio.");
+                return true;
+            }
+
+            if (cboCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese un valor para realizar la búsqueda.");
+                    return true;
+                }
+
+                if (!(aux.validarNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Para filtrar por precio solo pueden ingresar valores numéricos.");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /*private bool validarNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }*/
     }
 }

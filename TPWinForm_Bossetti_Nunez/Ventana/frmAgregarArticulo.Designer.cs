@@ -47,6 +47,9 @@ namespace Ventana
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.txtImagenURL = new System.Windows.Forms.TextBox();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
+            this.lblCodigoRequerido = new System.Windows.Forms.Label();
+            this.lblNombreRequerido = new System.Windows.Forms.Label();
+            this.lblPrecioRequerido = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,11 +211,44 @@ namespace Ventana
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
+            // lblCodigoRequerido
+            // 
+            this.lblCodigoRequerido.AutoSize = true;
+            this.lblCodigoRequerido.ForeColor = System.Drawing.Color.Red;
+            this.lblCodigoRequerido.Location = new System.Drawing.Point(211, 25);
+            this.lblCodigoRequerido.Name = "lblCodigoRequerido";
+            this.lblCodigoRequerido.Size = new System.Drawing.Size(60, 13);
+            this.lblCodigoRequerido.TabIndex = 17;
+            this.lblCodigoRequerido.Text = "*Requerido";
+            // 
+            // lblNombreRequerido
+            // 
+            this.lblNombreRequerido.AutoSize = true;
+            this.lblNombreRequerido.ForeColor = System.Drawing.Color.Red;
+            this.lblNombreRequerido.Location = new System.Drawing.Point(211, 52);
+            this.lblNombreRequerido.Name = "lblNombreRequerido";
+            this.lblNombreRequerido.Size = new System.Drawing.Size(60, 13);
+            this.lblNombreRequerido.TabIndex = 18;
+            this.lblNombreRequerido.Text = "*Requerido";
+            // 
+            // lblPrecioRequerido
+            // 
+            this.lblPrecioRequerido.AutoSize = true;
+            this.lblPrecioRequerido.ForeColor = System.Drawing.Color.Red;
+            this.lblPrecioRequerido.Location = new System.Drawing.Point(212, 181);
+            this.lblPrecioRequerido.Name = "lblPrecioRequerido";
+            this.lblPrecioRequerido.Size = new System.Drawing.Size(60, 13);
+            this.lblPrecioRequerido.TabIndex = 19;
+            this.lblPrecioRequerido.Text = "*Requerido";
+            // 
             // frmAgregarArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 259);
+            this.Controls.Add(this.lblPrecioRequerido);
+            this.Controls.Add(this.lblNombreRequerido);
+            this.Controls.Add(this.lblCodigoRequerido);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.txtImagenURL);
             this.Controls.Add(this.pbxArticulo);
@@ -261,5 +297,8 @@ namespace Ventana
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.TextBox txtImagenURL;
         private System.Windows.Forms.Button btnAgregarImagen;
+        private System.Windows.Forms.Label lblCodigoRequerido;
+        private System.Windows.Forms.Label lblNombreRequerido;
+        private System.Windows.Forms.Label lblPrecioRequerido;
     }
 }
