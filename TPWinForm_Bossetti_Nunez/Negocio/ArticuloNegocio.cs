@@ -33,8 +33,10 @@ namespace Negocio
                     aux.Categoria = new Categoria();
 
                     if (!(datos.Lector["Categoria_Descripcion"] is DBNull))
+                    {
                         aux.Categoria.ID = (int)datos.Lector["Categoria_Id"];
                         aux.Categoria.Descripcion = (string)datos.Lector["Categoria_Descripcion"];
+                    }               
                                          
                     aux.ImagenURL = (string)datos.Lector["ImagenUrl"];
                     aux.Precio = (decimal)datos.Lector["Precio"];

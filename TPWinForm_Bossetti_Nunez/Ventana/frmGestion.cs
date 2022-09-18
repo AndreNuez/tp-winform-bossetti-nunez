@@ -86,7 +86,6 @@ namespace Ventana
 
         private void cargarImagen(string imagen)
         {
-
             try
             {
                 pbxArticulo.Load(imagen);
@@ -117,7 +116,14 @@ namespace Ventana
 
         private void btnEliminarLogico_Click(object sender, EventArgs e)
         {
-            Eliminar(true);
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Eliminar(true);
+            }
+            else
+            {
+                MessageBox.Show("Primero debe seleccionar un artículo de la lista.");
+            }
         }
 
         private void Eliminar(bool logico = false)
@@ -131,7 +137,6 @@ namespace Ventana
                     DialogResult respuesta = MessageBox.Show("¿Seguro desea eliminarlo?", "Eliminado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (respuesta == DialogResult.Yes)
                     {
-                    
                         seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
                         negocio.EliminarLogico(seleccionado.IDArticulo);
                         cargar();
