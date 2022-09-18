@@ -25,13 +25,24 @@ namespace Ventana
         private void frmDetalle_Load(object sender, EventArgs e)
         {
             txtDetCodigo.Text = detalle.Codigo;
+            txtDetCodigo.Enabled = false;
             txtDetNombre.Text = detalle.Nombre;
+            txtDetNombre.Enabled = false;
             txtDetDescripcion.Text = detalle.Descripcion;
+            txtDetDescripcion.Enabled = false;
             txtDetMarca.Text = detalle.Marca.ToString();
-            txtDetCategoria.Text = detalle.Categoria.ID.ToString();
+            txtDetMarca.Enabled = false;
+            txtDetCategoria.Text = detalle.Categoria.ToString();
+            txtDetCategoria.Enabled = false;
             txtDetPrecio.Text = detalle.Precio.ToString();
+            txtDetPrecio.Enabled = false;
             txtDetImagen.Text = detalle.ImagenURL.ToString();
+            txtDetImagen.Enabled = false;
+        }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

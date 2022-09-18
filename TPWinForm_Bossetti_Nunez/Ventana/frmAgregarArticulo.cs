@@ -106,7 +106,6 @@ namespace Ventana
                     txtImagenURL.Text = articulo.ImagenURL;
                     cargarImagen(articulo.ImagenURL);
                     txtPrecio.Text = articulo.Precio.ToString();
-
                     cboMarca.SelectedValue = articulo.Marca.ID;
                     cboCategoria.SelectedValue = articulo.Categoria.ID;
                     
