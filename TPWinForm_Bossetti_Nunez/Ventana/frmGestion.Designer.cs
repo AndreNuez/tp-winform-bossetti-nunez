@@ -34,7 +34,6 @@ namespace Ventana
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminarFisico = new System.Windows.Forms.Button();
             this.btnEliminarLogico = new System.Windows.Forms.Button();
             this.lblCampo = new System.Windows.Forms.Label();
             this.cboCampo = new System.Windows.Forms.ComboBox();
@@ -51,9 +50,9 @@ namespace Ventana
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(11, 258);
+            this.btnAgregar.Location = new System.Drawing.Point(11, 299);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(67, 25);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -63,7 +62,7 @@ namespace Ventana
             // 
             this.btnSalir.Location = new System.Drawing.Point(719, 339);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(68, 23);
+            this.btnSalir.Size = new System.Drawing.Size(67, 25);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -75,7 +74,7 @@ namespace Ventana
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(11, 67);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 62;
@@ -88,7 +87,7 @@ namespace Ventana
             // pbxArticulo
             // 
             this.pbxArticulo.Location = new System.Drawing.Point(602, 67);
-            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(185, 174);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -97,40 +96,29 @@ namespace Ventana
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(92, 258);
+            this.btnModificar.Location = new System.Drawing.Point(84, 299);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(67, 25);
             this.btnModificar.TabIndex = 4;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnEliminarFisico
-            // 
-            this.btnEliminarFisico.Location = new System.Drawing.Point(172, 258);
-            this.btnEliminarFisico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnEliminarFisico.Name = "btnEliminarFisico";
-            this.btnEliminarFisico.Size = new System.Drawing.Size(117, 23);
-            this.btnEliminarFisico.TabIndex = 5;
-            this.btnEliminarFisico.Text = "Eliminar Físico";
-            this.btnEliminarFisico.UseVisualStyleBackColor = true;
-            this.btnEliminarFisico.Click += new System.EventHandler(this.btnEliminarFisico_Click);
-            // 
             // btnEliminarLogico
             // 
-            this.btnEliminarLogico.Location = new System.Drawing.Point(293, 258);
-            this.btnEliminarLogico.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEliminarLogico.Location = new System.Drawing.Point(156, 299);
+            this.btnEliminarLogico.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarLogico.Name = "btnEliminarLogico";
-            this.btnEliminarLogico.Size = new System.Drawing.Size(119, 22);
+            this.btnEliminarLogico.Size = new System.Drawing.Size(67, 25);
             this.btnEliminarLogico.TabIndex = 6;
-            this.btnEliminarLogico.Text = "Eliminar Lógico";
+            this.btnEliminarLogico.Text = "Eliminar";
             this.btnEliminarLogico.UseVisualStyleBackColor = true;
             this.btnEliminarLogico.Click += new System.EventHandler(this.btnEliminarLogico_Click);
             // 
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
-            this.lblCampo.Location = new System.Drawing.Point(8, 300);
+            this.lblCampo.Location = new System.Drawing.Point(11, 254);
             this.lblCampo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCampo.Name = "lblCampo";
             this.lblCampo.Size = new System.Drawing.Size(43, 13);
@@ -141,8 +129,8 @@ namespace Ventana
             // 
             this.cboCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCampo.FormattingEnabled = true;
-            this.cboCampo.Location = new System.Drawing.Point(55, 300);
-            this.cboCampo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboCampo.Location = new System.Drawing.Point(58, 254);
+            this.cboCampo.Margin = new System.Windows.Forms.Padding(2);
             this.cboCampo.Name = "cboCampo";
             this.cboCampo.Size = new System.Drawing.Size(96, 21);
             this.cboCampo.TabIndex = 8;
@@ -151,7 +139,7 @@ namespace Ventana
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
-            this.lblCriterio.Location = new System.Drawing.Point(155, 300);
+            this.lblCriterio.Location = new System.Drawing.Point(158, 254);
             this.lblCriterio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCriterio.Name = "lblCriterio";
             this.lblCriterio.Size = new System.Drawing.Size(42, 13);
@@ -162,24 +150,24 @@ namespace Ventana
             // 
             this.cboCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCriterio.FormattingEnabled = true;
-            this.cboCriterio.Location = new System.Drawing.Point(201, 300);
-            this.cboCriterio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboCriterio.Location = new System.Drawing.Point(204, 254);
+            this.cboCriterio.Margin = new System.Windows.Forms.Padding(2);
             this.cboCriterio.Name = "cboCriterio";
             this.cboCriterio.Size = new System.Drawing.Size(96, 21);
             this.cboCriterio.TabIndex = 10;
             // 
             // txtFiltroAvanzado
             // 
-            this.txtFiltroAvanzado.Location = new System.Drawing.Point(337, 300);
-            this.txtFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(340, 254);
+            this.txtFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
-            this.txtFiltroAvanzado.Size = new System.Drawing.Size(105, 20);
+            this.txtFiltroAvanzado.Size = new System.Drawing.Size(161, 20);
             this.txtFiltroAvanzado.TabIndex = 11;
             // 
             // lblFiltroAvanzado
             // 
             this.lblFiltroAvanzado.AutoSize = true;
-            this.lblFiltroAvanzado.Location = new System.Drawing.Point(301, 300);
+            this.lblFiltroAvanzado.Location = new System.Drawing.Point(304, 254);
             this.lblFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
             this.lblFiltroAvanzado.Size = new System.Drawing.Size(32, 13);
@@ -188,8 +176,8 @@ namespace Ventana
             // 
             // btnFiltro
             // 
-            this.btnFiltro.Location = new System.Drawing.Point(461, 297);
-            this.btnFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFiltro.Location = new System.Drawing.Point(519, 251);
+            this.btnFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.btnFiltro.Name = "btnFiltro";
             this.btnFiltro.Size = new System.Drawing.Size(67, 25);
             this.btnFiltro.TabIndex = 13;
@@ -200,7 +188,7 @@ namespace Ventana
             // txtFiltro
             // 
             this.txtFiltro.Location = new System.Drawing.Point(92, 36);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(234, 20);
             this.txtFiltro.TabIndex = 14;
@@ -231,7 +219,6 @@ namespace Ventana
             this.Controls.Add(this.cboCampo);
             this.Controls.Add(this.lblCampo);
             this.Controls.Add(this.btnEliminarLogico);
-            this.Controls.Add(this.btnEliminarFisico);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvArticulos);
@@ -256,7 +243,6 @@ namespace Ventana
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnEliminarFisico;
         private System.Windows.Forms.Button btnEliminarLogico;
         private System.Windows.Forms.Label lblCampo;
         private System.Windows.Forms.ComboBox cboCampo;

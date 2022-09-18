@@ -99,12 +99,20 @@ namespace Ventana
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Articulo seleccionado;
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado;
+                seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
             
-            frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
-            modificar.ShowDialog();
-            cargar();
+                frmAgregarArticulo modificar = new frmAgregarArticulo(seleccionado);
+                modificar.ShowDialog();
+                cargar();
+            }
+            else
+            {
+                MessageBox.Show("Primero debe seleccionar un artículo de la lista.");
+            }
+            
         }
 
         private void btnEliminarFisico_Click(object sender, EventArgs e)
